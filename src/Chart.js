@@ -57,24 +57,25 @@ const FetchApiWithMetrics = () => {
     return { successRate, averageTime };
   };
 
-//   // Example function to make an API request
-//   const makeApiRequest = async () => {
-//     const startTime = Date.now();
-//     setTotalCount(prevCount => prevCount + 1);
+  // Example function to make an API request
+  const makeApiRequest = async () => {
+    const startTime = Date.now();
+    setTotalCount(prevCount => prevCount + 1);
 
-//     try {
-//       const response = await fetch(url);
-//       const data = await response.json();
-//       if (response.ok) {
-//         setSuccessCount(prevCount => prevCount + 1);
-//       }
-//     } catch (error) {
-//       console.error('API request failed:', error);
-//     } finally {
-//       const endTime = Date.now();
-//       setTotalTime(prevTime => prevTime + (endTime - startTime));
-//     }
-//   };
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      console.log(data)
+      if (response.ok) {
+        setSuccessCount(prevCount => prevCount + 1);
+      }
+    } catch (error) {
+      console.error('API request failed:', error);
+    } finally {
+      const endTime = Date.now();
+      setTotalTime(prevTime => prevTime + (endTime - startTime));
+    }
+  };
 
   const { successRate, averageTime } = calculateMetrics();
 
@@ -190,6 +191,7 @@ const FetchApiWithMetrics = () => {
       <button onClick={handleFetch} className='button'>Fetch Data</button>
       <br />
       {/* <p>Original Delay Time : {responseTimes}</p> */}
+      {makeApiRequest} 
 
       <p className='mainText'>Original Delay Time : {responseTimes.slice(-2)}</p>
 
