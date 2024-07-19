@@ -9,6 +9,8 @@ import { Grid } from '@mui/material';
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 ChartJS.register(ArcElement, Tooltip, Legend);
 
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 const FetchApiWithMetrics = () => {
   const [url, setUrl] = useState('');
   const [responseTimes, setResponseTimes] = useState([]);
@@ -23,6 +25,7 @@ const FetchApiWithMetrics = () => {
     const sizes = [];
     for (let i = 0; i < 10; i++) {
       const start = performance.now();
+      await sleep(200); // 2 seconds sleep
       const response = await fetch(url);
       const end = performance.now();
       const data = await response.blob();
@@ -38,6 +41,7 @@ const FetchApiWithMetrics = () => {
     setTotalCount(prevCount => prevCount + 1);
 
     try {
+      await sleep(200); // 2 seconds sleep
       const response = await fetch(url);
     //   const data = await response.json();
       if (response.ok) {
