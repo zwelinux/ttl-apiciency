@@ -208,7 +208,7 @@ const FetchApiWithMetrics = () => {
           <Pie data={successRatePieData} />
         </Grid>
         <Grid item xs={6}>
-          AVERAGE RESPONSE TIME
+          RESPONSE TIME
           <Pie data={averageResponseTimePieData} />
         </Grid>
       </Grid>
