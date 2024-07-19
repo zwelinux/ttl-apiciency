@@ -180,7 +180,8 @@ const FetchApiWithMetrics = () => {
 
   return (
     <div className='container'>
-      <h1>Fetch API Data and Measure Efficiency</h1>
+      <h1>Time To Live (TTL)</h1>
+      <h2>Fetch API Data and Measure Efficiency</h2>
       <input
         type="text"
         value={url}
