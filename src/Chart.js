@@ -13,7 +13,7 @@ const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const FetchApiWithMetrics = () => {
   const [url, setUrl] = useState('');
-  const [responseTimes, setResponseTimes] = useState([]);
+  let [responseTimes, setResponseTimes] = useState([]);
   const [responseSizes, setResponseSizes] = useState([]);
 
   const [successCount, setSuccessCount] = useState(0);
@@ -39,7 +39,7 @@ const FetchApiWithMetrics = () => {
 
     const startTime = Date.now();
     setTotalCount(prevCount => prevCount + 1);
-
+    
     try {
       await sleep(200); // 2 seconds sleep
       const response = await fetch(url);
@@ -181,7 +181,6 @@ const FetchApiWithMetrics = () => {
 
 //   pie ends here
 
-  console.log(responseTimes)
   return (
     <div className='container'>
       <h1>Time To Live (TTL)</h1>
