@@ -198,7 +198,7 @@ const FetchApiWithMetrics = () => {
       {/* <p>Original Delay Time : {responseTimes}</p> */}
       {makeApiRequest} 
 
-      <p className='mainText'>Original Delay Time : {responseTimes.slice(-2)}</p>
+      <p className='mainText'>Original Delay Time : {responseTimes.slice(-2)} ms</p>
 
       {responseTimes.length > 0 && <Bar data={data} options={options} />}
       {responseTimes.length > 0 && <Bar data={timeData} options={timeOptions} />}
