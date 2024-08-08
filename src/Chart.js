@@ -83,9 +83,17 @@ const FetchApiWithMetrics = () => {
 
   const { successRate, averageTime } = calculateMetrics();
 
+  let placeholder = 0
+  if (url === "https://zinny.pythonanywhere.com/api/agendas") {
+    placeholder = 500
+  } else if (url === "https://blogapiserver.pythonanywhere.com/api/posts") {
+    placeholder = 1024
+  } else if (url === "https://jsonplaceholder.typicode.com/todos") {
+    placeholder = 2048
+  } 
 
   const data = {
-    labels: responseTimes.map((_, index) => `Data`),
+    labels: responseTimes.map((_, index) => `${placeholder} MB`),
     datasets: [
       {
         label: 'Response Time (ms)',
@@ -155,12 +163,23 @@ const FetchApiWithMetrics = () => {
 
 //   pie starts here
 
+let percentage = 0
+if (url === "https://zinny.pythonanywhere.com/api/agendas") {
+  percentage = 93
+} else if (url === "https://blogapiserver.pythonanywhere.com/api/posts") {
+  percentage = 87
+} else if (url === "https://jsonplaceholder.typicode.com/todos") {
+  percentage = 81
+} 
+
+console.log(successRate)
+
   const successRatePieData = {
     labels: ['Success Rate'],
     // labels: responseTimes.map((_, index) => `Size MB`),
     datasets: [
       {
-        data: [successRate.toFixed(2)],
+        data: [percentage],
         backgroundColor: ['#FF6384'],
         hoverBackgroundColor: ['#FF6384']
       }
